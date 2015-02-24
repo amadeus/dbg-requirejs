@@ -4,7 +4,7 @@
 
 define(function(){
 
-var console, methods, empty, i;
+var console, methods, empty, i, name;
 
 console = this.console || {};
 
@@ -20,7 +20,8 @@ return ({
 	// the `empty` function. `bind` is required to avoid an Invalid Invocation error
 	enable: function(){
 		for (i = 0; i < methods.length; i++){
-			this[methods[i]] = console[name] ? console[name].bind(console) : empty;
+			name = methods[i];
+			this[name] = console[name] ? console[name].bind(console) : empty;
 		}
 		return this;
 	},
